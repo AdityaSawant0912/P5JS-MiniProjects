@@ -32,12 +32,17 @@ function mousePressed() {
   if (!complete) {
     x1 = mouseX;
     y1 = mouseY;
-    complete = true;
+    if (x1 > 0 && x1 < width && y1 > 0 && y1 < height) {
+      complete = true;
+    }
   } else {
     walls.push(new Boundary(x1, y1, mouseX, mouseY));
     index++
     complete = false;
   }
+}
+function removeLast(){
+  walls.pop();
 }
 
 function draw() {
@@ -45,10 +50,9 @@ function draw() {
   for (let wall of walls) {
     wall.show();
   }
-  if(complete){
+  if(complete && mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
     line(x1, y1, mouseX, mouseY);
   }
-
   if (keyIsDown(BACKSPACE)) {
     walls = [];
     walls.push(new Boundary(0, 0, width, 0));

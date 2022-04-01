@@ -4,6 +4,7 @@ let score = 0;
 let wallsArr = [];
 let gSlider;
 let flyPowerSlider;
+let gameOver = false;
 
 function setup() {
   createCanvas(500, 700);
@@ -52,6 +53,7 @@ function showScore() {
 
 function endGame() {
   fill(255, 0, 0);
+  gameOver = true;
   noStroke();
   textSize(60);
   text("Game Over", 100, height / 2);
@@ -69,7 +71,11 @@ function restart(){
 }
 
 function mousePressed() {
-  restart();
+  if(gameOver)
+    restart();
+  else
+    bird.fly();
+  // restart();
 }
 
 function draw() {

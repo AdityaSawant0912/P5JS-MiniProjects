@@ -1,6 +1,6 @@
 let w;
 let N = 10;
-let B = N * 3;
+let B = N * 2;
 let grid = new Array(N);
 let flag = false;
 

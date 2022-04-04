@@ -63,7 +63,7 @@ function endGame() {
 function restart(){
   bird.y = width/2
   bird.v = 0;
-  
+  gameoOver = false;
   wallsArr = [];
   score = 0;
   wallsArr.push(new Walls());
@@ -71,9 +71,9 @@ function restart(){
 }
 
 function mousePressed() {
-  //if(gameOver)
-   // restart();
- // else
+ if(gameOver)
+   restart();
+ else
     bird.fly();
   // restart();
 }

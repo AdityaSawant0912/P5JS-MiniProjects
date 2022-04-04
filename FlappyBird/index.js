@@ -71,11 +71,8 @@ function restart(){
 }
 
 function mousePressed() {
- if(gameOver)
-   restart();
- else
-    bird.fly();
-  // restart();
+ 
+ restart();
 }
 
 function draw() {

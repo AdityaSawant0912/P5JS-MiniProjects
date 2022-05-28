@@ -3,6 +3,7 @@ let N = 10;
 let B = N * 2;
 let grid = new Array(N);
 let flag = false;
+let first = true;
 
 function setup() {
   createCanvas(400, 400);
@@ -80,25 +81,54 @@ function checkIfDone(){
   // console.log(c);
 }
 
+function switchB(x, y) {
+  let nx = Math.floor(random(0, N));
+  let ny = Math.floor(random(0, N));
+  if (nx == x && ny == y) return switchB(x, y);
+  else if (grid[nx][ny].bomb) return switchB(x, y);
+  else grid[nx][ny].bomb = true;
+
+}
 function draw() {
   background(0);
   showGrid();
+  showBombs()
   if (mouseIsPressed === true) {
     let x = floor(mouseX / w);
     let y = floor(mouseY / w);
+    
     if (mouseButton == LEFT && x < N && y < N && !flag) {
       if (grid[x][y].bomb) {
-        push();
-        textAlign(CENTER, CENTER);
-        fill(255, 0, 0, 150);
-        textSize(w * 2);
-        text("You Lose", width / 2, height / 2);
-        showBombs();
-        pop();
-        noLoop();
-      } else grid[x][y].pop();
+        
+        if (first) {
+          grid[x][y].bomb = false;
+          switchB(x, y)
+          grid[x][y].pop()
+          first = false;
+        }
+        else {
+          push();
+          textAlign(CENTER, CENTER);
+          fill(255, 0, 0, 150);
+          textSize(w * 2);
+          text("You Lose", width / 2, height / 2);
+          showBombs();
+          pop();
+          noLoop();
+        }
+      } else{
+        grid[x][y].pop();
+        first = false;
+      } 
     }
   }
-  
+  if(flag){
+    let x = floor(mouseX / w);
+    let y = floor(mouseY / w);
+    push();
+    fill(255, 0, 0);
+    ellipse(x * w + w / 2, y * w + w / 2, w / 3);
+    pop();
+  }
   checkIfDone();
 }

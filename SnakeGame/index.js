@@ -4,6 +4,8 @@ let dir = 'u';
 let cooldown = 0;
 let p
 let speed = 8;
+let bestScore = 0;
+let bestP;
 function setup() {
   createCanvas(800, 800);
   frameRate(speed);
@@ -11,7 +13,10 @@ function setup() {
   grid.addFood();
   grid.createSnake();
   
+  bestScore = getItem("SnakeGame-best");
   p = createP("Score: 0");
+  if(bestScore == null) bestScore = 0;
+  bestP = createP(`Best Score: ${bestScore}`);
   
 }
 
@@ -42,8 +47,13 @@ function draw() {
   grid.moveSnake();
   grid.show()
   p.html("Score: " + grid.score);
-  
-  if(grid.score > 0 && grid.score % 10 == 0) 
+  if (grid.score > bestScore) {
+    bestP.html(`Best Score: ${grid.score}`);
+    storeItem("SnakeGame-best", grid.score);
+  }
+  else  
+    bestP.html(`Best Score: ${bestScore}`);
+  if(grid.score > 0 && grid.score % 15 == 0) 
     speed++;
   if(cooldown>0)cooldown = 0;
 }

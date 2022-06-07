@@ -13,98 +13,30 @@ class Board {
       }
     }
   }
-  getNextSafe(index, cameFrom) {
-    let temp = [];
-    // for (let row = 0; row < N; row++) {
-    //   for (let col = 0 ; col < N; col++) {
-    //     temp = this.spots[Index(col, row, this.N)];
-    //     if (row !== i && col !== j && this.isSafe(temp.i, temp.j)) {
-    //       temp.safe = true;
-    //       return temp;
-    //     }
-    //   }
-    // }
 
-    for (let i = 0; i < this.N * this.N; i++) {
-      if (cameFrom.includes(this.spots[i])){
-        console.log("true");
-      }
-      if (i == index) continue;
-      else if (cameFrom.includes(this.spots[i])) console.log("Skiped");
-      else if (this.isSafe(i)) temp.push(this.spots[i]);
+  getNextsafeCol(row) {
+    for (let c = 0; c < this.N; c++) {
+      if (this.spots[Index(row, c, this.N)].visited) continue;
+      if (this.isSafeC(row, c)) return c;
     }
-    console.log(index, cameFrom);
-    for (let spot of temp) 
-      spot.show(color(0, 255, 0));
-    // let done = false;
-    // index = 0
-    // if(cameFrom.includes(temp[index]))
-    //   console.log(true);
-    // if(temp.length == 1) return temp[0];
-    // while (done){
-    //   if(cameFrom.includes(temp[0])){
-    //     temp = temp.shift(1);
-    //   }else{
-    //     done = true;
-    //   }
-    // }
-    return temp[0];
+    return -1;
   }
 
-  isSafe(index) {
-    // check right
-    for (let i = index; i < this.N * this.N; i += this.N) {
-      if (this.spots[i].isQueen) return false;
+
+  isSafeC(r, c) {
+    // check up
+    for (let i = r; i >= 0; i--) {
+      if (this.spots[Index(i, c, this.N)].isQueen) return false;
     }
-    // check left
-    for (let i = index; i >= 0; i -= this.N) {
-      if (this.spots[i].isQueen) return false;
+
+    // check up left
+    for (let i = r, j = c; i >= 0 && j >= 0; i--, j--) {
+      if (this.spots[Index(i, j, this.N)].isQueen) return false;
     }
-    // check top
-    for (let i = index; i >= 0; i -= 1) {
-      if (this.spots[i].j == 0 && !this.spots[i].isQueen) break;
-      if (this.spots[i].isQueen) return false;
-    }
-    // check bottom
-    for (let i = index; i < this.N * this.N; i += 1) {
-      if (this.spots[i].j == this.N - 1 && !this.spots[i].isQueen) break;
-      if (this.spots[i].isQueen) return false;
-    }
-    // check top right
-    for (let i = index; i < this.N * this.N; i += this.N + 1) {
-      if (
-        (this.spots[i].j == 0 || this.spots[i].i == this.N - 1) &&
-        !this.spots[i].isQueen
-      )
-        break;
-      if (this.spots[i].isQueen) return false;
-    }
-    // check top left
-    for (let i = index; i >= 0; i -= this.N + 1) {
-      if (
-        (this.spots[i].j == 0 || this.spots[i].i == 0) &&
-        !this.spots[i].isQueen
-      )
-        break;
-      if (this.spots[i].isQueen) return false;
-    }
-    // check bottom right
-    for (let i = index; i < this.N * this.N; i += this.N - 1) {
-      if (
-        (this.spots[i].j == this.N - 1 || this.spots[i].i == this.N - 1) &&
-        !this.spots[i].isQueen
-      )
-        break;
-      if (this.spots[i].isQueen) return false;
-    }
-    // check bottom left
-    for (let i = index; i >= 0; i -= this.N - 1) {
-      if (
-        (this.spots[i].j == this.N - 1 || this.spots[i].i == 0) &&
-        !this.spots[i].isQueen
-      )
-        break;
-      if (this.spots[i].isQueen) return false;
+
+    // check up right
+    for (let i = r, j = c; i >= 0 && j < this.N; i--, j++) {
+      if (this.spots[Index(i, j, this.N)].isQueen) return false;
     }
     return true;
   }

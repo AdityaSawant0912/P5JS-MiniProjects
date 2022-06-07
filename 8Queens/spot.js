@@ -1,5 +1,5 @@
 class Spot {
-  constructor(i, j) {
+  constructor(i, j,w, h) {
     this.i = i;
     this.j = j;
     this.w = w;

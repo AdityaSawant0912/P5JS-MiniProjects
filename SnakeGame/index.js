@@ -3,9 +3,10 @@ let grid;
 let dir = 'u';
 let cooldown = 0;
 let p
+let speed = 8;
 function setup() {
   createCanvas(800, 800);
-  frameRate(10);
+  frameRate(speed);
   grid = new Grid(20, 20);
   grid.addFood();
   grid.createSnake();
@@ -41,6 +42,9 @@ function draw() {
   grid.moveSnake();
   grid.show()
   p.html("Score: " + grid.score);
+  
+  if(grid.score > 0 && grid.score % 10 == 0) 
+    speed++;
   if(cooldown>0)cooldown = 0;
 }
   // noLoop()

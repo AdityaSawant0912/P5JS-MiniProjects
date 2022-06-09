@@ -92,7 +92,6 @@ function switchB(x, y) {
 function draw() {
   background(0);
   showGrid();
-  showBombs()
   if (mouseIsPressed === true) {
     let x = floor(mouseX / w);
     let y = floor(mouseY / w);

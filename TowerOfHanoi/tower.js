@@ -150,10 +150,11 @@ class Tower {
 		if (mx >= ((width / 2) - this.maxDiskW - 1) && mx <= ((width / 2) + this.maxDiskW + 1)) disk = 1;
 		else if (mx <= ((width / 2) - this.maxDiskW - 1)) disk = 0;
 		else if (mx >= ((width / 2) + this.maxDiskW + 1)) disk = 2;
-		if (this.pegs[disk].length == 0) {
+		if (disk == this.holding[0]) this.pegs[disk].push(this.holding[1])
+		else if (this.pegs[disk].length == 0) {
 			this.pegs[disk].push(this.holding[1])
 			this.moves++;
-		} else if (disk == this.holding[0]) this.pegs[disk].push(this.holding[1])
+		} 
 		else {
 			let top = this.pegs[disk].pop();
 			this.pegs[disk].push(top);

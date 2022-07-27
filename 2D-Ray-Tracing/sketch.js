@@ -9,7 +9,7 @@ let x1, x2;
 let index;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800, 800);
 
   // for (let i = 0; i < 5; i++) {
   //   let x1 = random(width);
@@ -42,7 +42,8 @@ function mousePressed() {
   }
 }
 function removeLast(){
-  walls.pop();
+  // if(walls.length > 4)
+    walls.pop();
 }
 
 function draw() {

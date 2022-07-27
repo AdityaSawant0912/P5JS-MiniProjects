@@ -39,7 +39,7 @@ function setup() {
   input = createInput(`${N}`);
   solP = createP("");
   frameRate(5)
-  createCanvas(400, 400);
+  createCanvas(800, 800);
   input.input(changeN)
   start()
 }

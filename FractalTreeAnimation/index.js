@@ -7,7 +7,7 @@ let depthVal;
 let p;
 let len = 200;
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1024, 995);
   p = createP("Left Angle")
   leftAngle = createSlider(0, PI, 0.26, 0.01)
   p = createP("Right Angle")

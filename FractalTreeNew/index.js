@@ -5,9 +5,10 @@ let leftAngleVal, rightAngleVal, leftLenMulVal, rightLenMulVal;
 let depth;
 let depthVal;
 let p;
-let len = 200;
+let len = 180;
+let y = 20, mul = 2;
 function setup() {
-  createCanvas(1024, 995);
+  createCanvas(800, 800);
   p = createP("Left Angle")
   leftAngle = createSlider(0, PI, 0.26, 0.01)
   p = createP("Right Angle")
@@ -41,8 +42,12 @@ function draw() {
   background(0);
   noStroke();
   fill(255);
-  text("Angle: " + leftLenMulVal, width - 200, 100);
-  text("Depth: " + rightLenMulVal, width - 200, 150);
-  text("Len Mul: " + leftAngle, width - 200, 200);
+  text("Left Angle: " + leftAngleVal, width - 150, y);
+  text("Right Left Angle: " + rightAngleVal, width - 150, y * mul);
+  text("Left Length Multiplier: " + leftLenMulVal, width - 150, y * mul * 1.5);
+  text("Right Length Multiplier: " + rightLenMulVal, width - 150, y * mul * 2);
+  text("Depth: " + depthVal, width - 150, y * mul * 2.5);
   tree.draw();
+  
+  
 }

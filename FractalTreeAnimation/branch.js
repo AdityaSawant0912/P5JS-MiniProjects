@@ -11,9 +11,15 @@ class Branch {
     }
     
     show(){
+        if (depthVal > 6) {
+            stroke(255, map(this.sw, 1, depthVal, 20 , 225));
+            
+        } else {
+            stroke(255);
         
-        stroke(255);
-        strokeWeight(this.sw * 0.5);
+        }
+            stroke(255);
+        strokeWeight(this.sw * 0.3);
         if (this.animate) {
             let mid = p5.Vector.sub(this.end, this.begin).mult(this.percent * 0.01)
             mid = p5.Vector.add(this.begin, mid)

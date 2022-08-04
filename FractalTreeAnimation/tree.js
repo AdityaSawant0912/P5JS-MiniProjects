@@ -7,7 +7,7 @@ class Tree {
         this.currDepth = 0;
         console.log("created" + len);
         this.branches = [];
-        this.branches.push(new Branch(new createVector(width/2, height), new createVector(width/2, height - len), depthVal))
+        this.branches.push(new Branch(new createVector(width / 2, height - len), new createVector(width / 2, height - 2 * len), depthVal));
         // this.calculateTree();
     }
     
@@ -28,6 +28,7 @@ class Tree {
         });
         if(this.currDepth < depthVal && this.branches[this.branches.length -1].animate == false){
             this.calculateTree();
+            this.currDepth++;
         }
     }
 }

@@ -24,7 +24,7 @@ function draw() {
   collided.sort((a, b) => {return a.distanceFromPlayer - b.distanceFromPlayer})
   
   collided.forEach(entity => {
-    player.resolve(entity)
+    // player.resolve(entity)
   });
   
   

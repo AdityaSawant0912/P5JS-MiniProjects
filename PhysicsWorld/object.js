@@ -85,8 +85,8 @@ class Obj {
         if (!this.isCollided.south) {
             this.velocity.add(this.acceleration.x * this.deltaT, this.acceleration.y * this.deltaT)
         }
-        this.velocity.x = (mouseX - this.position.x) * 10
-        this.velocity.y = (mouseY - this.position.y) * 10
+        this.velocity.x = (mouseX - this.position.x) * 5
+        this.velocity.y = (mouseY - this.position.y) * 5
         this.position.add(this.velocity.x * this.deltaT, this.velocity.y * this.deltaT)
         // console.log(this.velocity);
         this.velocity.limit(500, 0)

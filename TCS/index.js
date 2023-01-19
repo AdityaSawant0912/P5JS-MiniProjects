@@ -42,8 +42,8 @@ function setup() {
   cnv.mousePressed(mousePressed1);
   if (p !== null && inp !== null) {
     p = createP("Enter valid expression: ");
-    inp = createInput(`${expression}`);
   }
+  inp = createInput(`${expression}`);
   inp.input(changeExp)
   state1 = new State(0, false, false);
   // state1.show = 8

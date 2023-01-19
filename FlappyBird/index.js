@@ -10,7 +10,7 @@ function setup() {
   createCanvas(500, 700);
   bird = new Bird();
   groundY = height - bird.r * 2;
-  bird.checkBoundary();
+  bird.checkCollision();
   wallsArr.push(new Walls());
   gSlider = createSlider(0.1, 3.0, 0.6, 0.1);
   gSlider.input(changeG);
@@ -18,13 +18,13 @@ function setup() {
   flyPowerSlider.input(changeFlyPower);
 }
 
-function changeG(){
+function changeG() {
   bird.g = gSlider.value();
   noLoop();
   restart();
 }
 
-function changeFlyPower(){
+function changeFlyPower() {
   bird.changeFlyPower = gSlider.value() * -1;
   noLoop();
   restart();
@@ -60,8 +60,8 @@ function endGame() {
   noLoop();
 }
 
-function restart(){
-  bird.y = width/2
+function restart() {
+  bird.y = width / 2
   bird.v = 0;
   gameoOver = false;
   wallsArr = [];
@@ -71,41 +71,45 @@ function restart(){
 }
 
 function mousePressed() {
- 
- restart();
+  restart();
 }
 
 function draw() {
   background(200);
   drawGround();
-  if (bird.checkBoundary(groundY)) {
+  showScore();
+  
+  for (let i = wallsArr.length - 1; i >= 0; i--) {
+    let walls = wallsArr[i];
+    walls.show();
+  }
+  bird.show();
+  
+  if (bird.checkCollision(groundY)) {
     endGame();
   }
 
   for (let i = wallsArr.length - 1; i >= 0; i--) {
     let walls = wallsArr[i];
-    walls.show();
     if (walls.x + walls.width < 0) {
       wallsArr.splice(i, 1);
-      score++;
+      score++
     }
     if (walls.x == width / 2) {
       wallsArr.push(new Walls());
     }
     if (
-      walls.x - walls.width <= bird.x + bird.r &&
-      walls.x + walls.width >= bird.x - bird.r
+      walls.x - bird.r <= bird.x &&  // Check if the Bird is between
+      walls.x + walls.w + bird.r  >= bird.x  // the walls horizontally
     ) {
       if (
-        bird.y - bird.r <= walls.gapY ||
-        bird.y + bird.r >= walls.gapY + walls.gapH
-      ) {
-        endGame();
+        walls.h1 + bird.r >= bird.y || // Check if the bird is not 
+        walls.y2 - bird.r <= bird.y // in the walls
+      )
+        endGame(); // Stop the game
       }
-    }
     walls.update();
   }
-  bird.show();
-  showScore();
+  
   bird.update();
 }

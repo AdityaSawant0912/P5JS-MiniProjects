@@ -11,7 +11,7 @@ atom = function(x, y, c){
 }
 
 function draw() {
-  
+  // background(255)
   for (let y = 1; y < height; y++) {
     for (let x = 1; x < width; x++) {
       dx = (x - width / 2) / (width * 100) - 0.233;

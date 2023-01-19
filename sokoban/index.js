@@ -3,7 +3,7 @@ let PX_WIDTH
 let currLevel;
 let levelNo = 0;
 let SKY;
-let DEALY;
+let DELAY;
 let Levels = {
   level0: {
     width: 8,

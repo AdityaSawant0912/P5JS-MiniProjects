@@ -34,8 +34,9 @@ document.getElementById("sclY").onchange = () => {
   graph.sclY = round(parseFloat(document.getElementById("sclY").value), 2)
 }
 
-document.getElementById("points").onchange = () => {
-  let str = document.getElementById("points").value
+function inp() {
+  console.log("Asd");
+  let str = document.getElementById("pts").value
   str = `[${str}]`
   graph.points = [];
   distanceMatrix = [];
@@ -53,7 +54,6 @@ document.getElementById("points").onchange = () => {
     console.log(error);
   }
 }
-
 
 
 function setup() {

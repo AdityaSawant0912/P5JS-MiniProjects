@@ -38,8 +38,8 @@ function draw() {
 
   // draw a line
   stroke(r, g, b, 100);
-  //line(startX, startY, endX, endY);
-  bezier(0, 0, startX, startY, endX, endY, width, height);
+  line(startX, startY, endX, endY);
+  // bezier(0, 0, startX, startY, endX, endY, width, height);
 
   // pick a new color
   r += random(-5, 5);

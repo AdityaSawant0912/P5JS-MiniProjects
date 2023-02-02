@@ -23,7 +23,7 @@ function mousePressed() {
     let nextX = floor(mx / (width / COLS));
     if(nextX < 0) nextX = 0;
     if(nextX > COLS - 1) nextX = COLS - 1;
-    board.drop(nextX);
+    board.drop(floor(nextX));
   }
 }
 
@@ -36,7 +36,7 @@ function draw() {
     // console.log("dropping");
   }
   if(board.isDropable) {
-    board.checkWinner()
+    board.checkWinner(board.board);
     if (board.winner != 0) {
       console.log("winner " + board.winner);
       push();

@@ -13,7 +13,7 @@ let diff = [0, 0];
 // expression = "(a + b) + ( c + d)";
 let p = null;
 let inp = null;
-expression = "(a+b)*";
+expression = "(((0+1)*.1.0) +((0.0)*.(1.1)*))";
 function drawArrow(base, vec) {
 push();
   stroke(255);
@@ -43,7 +43,8 @@ function setup() {
   if (p !== null && inp !== null) {
     p = createP("Enter valid expression: ");
   }
-  inp = createInput(`${expression}`);
+  if(inp === null)
+    inp = createInput(`${expression}`);
   inp.input(changeExp)
   state1 = new State(0, false, false);
   // state1.show = 8
@@ -55,9 +56,9 @@ function setup() {
   enfa = new eNFA(expression)
   enfa.calculateTree();
   enfa.calculateArrows();
-  console.log(enfa.tree);
-  console.log(enfa.connections);
-  console.log(enfa.extra);
+  // console.log(enfa.tree);
+  // console.log(enfa.connections);
+  // console.log(enfa.extra);
   // enfa.generateTree();
   
 }

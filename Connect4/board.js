@@ -121,6 +121,7 @@ class Board {
       if (this.board[this.dropCol][this.dropRow + 1] != 0) {
         this.isDropable = false;
         this.turn = -this.turn;
+        console.table(this.board)
       }
 
     }

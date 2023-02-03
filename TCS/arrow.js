@@ -1,7 +1,7 @@
 let p1 = { x: 0, y: 0 }
 let p2 = { x: 0, y: 0 }
 class Arrow {
-  constructor(text, x1, y1, x2, y2, isFinal = false, arc = false) {
+  constructor(text, x1, y1, x2, y2, isFinal = false, arc = false, dist, fromBot) {
     this.arc = arc;
     this.text = text;
     this.x1 = x1;
@@ -9,6 +9,10 @@ class Arrow {
     this.x2 = x2;
     this.y2 = y2;
     this.isFinal = isFinal
+    this.dist = arc ? dist : null;
+    this.fromBot = arc ? fromBot : null;
+    if(arc)
+      console.log(this.dist, this.fromBot);
   }
 
   draw() {
@@ -19,14 +23,20 @@ class Arrow {
 
       } else {
         if (this.x1 > this.x2) {
-          p1.x = this.x1 - SPACE/2;
-          p2.x = this.x2 + SPACE/2;
-        }else{
-          p1.x = this.x1 + SPACE/2;
-          p2.x = this.x2 - SPACE/2;
+          p1.x = this.x1 - SPACE / 2;
+          p2.x = this.x2 + SPACE / 2;
+        } else {
+          p1.x = this.x1 + SPACE / 2;
+          p2.x = this.x2 - SPACE / 2;
         }
-        p1.y = this.y1 - SPACE;
-        p2.y = this.y2 - SPACE;
+        if (this.fromBot) {
+          p1.y = this.y1 + SPACE/2 + this.dist;
+          p2.y = this.y2 + SPACE/2 + this.dist;
+        } else {
+          p1.y = this.y1 - SPACE/2 + this.dist;
+          p2.y = this.y2 - SPACE/2 + this.dist;
+        }
+
         push();
         stroke(255);
         strokeWeight(3);

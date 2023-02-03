@@ -215,9 +215,9 @@ class eNFA {
     })
 
     this.tree = stack[0]
-    // for (let i = 0; i < this.tree.length; i++) {
-    //     this.tree[i].show = i;
-    // }
+    for (let i = 0; i < this.tree.length; i++) {
+        this.tree[i].show = i;
+    }
 
     this.tree[0].isStart = true;
     this.tree[this.tree.length - 1].isFinal = true;

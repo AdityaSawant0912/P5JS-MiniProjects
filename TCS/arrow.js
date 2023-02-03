@@ -11,8 +11,8 @@ class Arrow {
     this.isFinal = isFinal
     this.dist = arc ? dist : null;
     this.fromBot = arc ? fromBot : null;
-    if(arc)
-      console.log(this.dist, this.fromBot);
+    // if(arc)
+      // console.log(this.dist, this.fromBot);
   }
 
   draw() {

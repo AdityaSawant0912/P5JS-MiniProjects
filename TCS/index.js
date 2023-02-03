@@ -40,9 +40,9 @@ function changeExp() {
 
 function start() {
   CanvasScale = [1, 1]
-  let exp = document.getElementById("exp").value;
-  let expression = InfixToPostfix(exp)
-  console.log(expression);
+  let exps = document.getElementById("exps").value;
+  let expression = InfixToPostfix(exps)
+  // console.log(expression);
   enfa = new eNFA(expression)
   enfa.calculateTree();
   enfa.calculateArrows();
@@ -86,7 +86,7 @@ function mouseWheel(event) {
   CanvasScale[0] = 2;
   CanvasScale[1] = 2;
   }
-  console.log(CanvasScale[0]);
+  // console.log(CanvasScale[0]);
 }
 
 

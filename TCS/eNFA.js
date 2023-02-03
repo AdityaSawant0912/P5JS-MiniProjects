@@ -143,7 +143,7 @@ class eNFA {
   }
 
   closure(a) {
-    console.log(a);
+    // console.log(a);
     let arr = [];
     let start;
     if (isOperand(a)) {
@@ -174,7 +174,7 @@ class eNFA {
         let state = a[i];
         state.x = a[0].x + state.x - tempX;
         state.y = a[0].y + state.y - tempY;
-        console.log(state.id, state.y);
+        // console.log(state.id, state.y);
         arr.push(state)
         if (state.y > maxY)
           maxY = state.y;

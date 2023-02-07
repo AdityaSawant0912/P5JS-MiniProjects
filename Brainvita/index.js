@@ -95,7 +95,7 @@ function getCord(x, y) {
 
 function isLegal(px, py, dx, dy) {
 
-  if ((Math.abs(px - dx) == 2 && py == dy) || (Math.abs(py - dy) == 2 && px == dx)) {
+  if (((Math.abs(px - dx) == 2 && py == dy) || (Math.abs(py - dy) == 2 && px == dx)) && board[(px + dx)/2][(py + dy)/2] == 1) {
     board[(px + dx)/2][(py + dy)/2] = 0
     return true;
   }

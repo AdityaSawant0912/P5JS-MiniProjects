@@ -234,7 +234,7 @@ function draw() {
 
 
   [y1, x1, err] = getIJ(mouseX, mouseY)
-  if (!err) {
+  if (!err && newRound) {
     if (player == 1 && board[x1][y1] == 0) {
       push()
       scale(0.5, 0.5)

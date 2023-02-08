@@ -52,6 +52,7 @@ function draw() {
   rotors.update();
   rotors.draw(rotorIn);
   bulbIn = rotors.out;
+  // bulbIn = inputOut;
   
   plugBoard.connections.forEach(con => {
     if (con[0] == rotors.out) {

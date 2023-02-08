@@ -10,6 +10,7 @@ function win(n, type) {
   push()
   stroke(255, 200);
   strokeWeight(5);
+  if(type == -1) return
   if (type == 1) {
     x = third / 4 + n * third/2
     line(x, boundary, x, height - boundary)
@@ -80,6 +81,7 @@ function check() {
   if(draw){
     draws += 1
     newRound = false
+    lastWin = [-1, -1]
   }
   
 }

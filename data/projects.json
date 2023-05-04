@@ -1,0 +1,16 @@
+{
+  "featured": "TowerOfHanoi",
+  "sequence" : [
+    "TowerOfHanoi",
+    "TowerOfHanoi",
+    "TowerOfHanoi",
+    "TowerOfHanoi",
+    "TowerOfHanoi"
+  ],
+  "TowerOfHanoi" : {
+    "name" : "Tower of Hanoi",
+    "description" : "A simple game of Tower of Hanoi",
+    "image" : "hanoi.jpg",
+    "link" : "TowerOfHanoi"
+  }
+}

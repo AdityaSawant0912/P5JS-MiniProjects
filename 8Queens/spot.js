@@ -17,7 +17,7 @@ class Spot {
       rect(this.i * this.w, this.j * this.h, this.w, this.h);
       if (this.isQueen) {
         fill(color(255, 0, 0));
-        textSize(16)
+        textSize(36)
         text(
           "Q",
           this.i * w + w / 2 - 7,

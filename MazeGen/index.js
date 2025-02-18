@@ -34,7 +34,7 @@ function removeWalls(a, b) {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
   // frameRate(5);
   cols = floor(width / w);
   rows = floor(height / w);

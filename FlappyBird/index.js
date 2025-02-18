@@ -7,7 +7,9 @@ let flyPowerSlider;
 let gameOver = false;
 
 function setup() {
-  createCanvas(500, 700);
+  let canvas = createCanvas(500, 700);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   bird = new Bird();
   groundY = height - bird.r * 2;
   bird.checkCollision();
@@ -78,20 +80,20 @@ function draw() {
   background(200);
   drawGround();
   showScore();
-  
+
   for (let i = wallsArr.length - 1; i >= 0; i--) {
     let walls = wallsArr[i];
     walls.show();
   }
   bird.show();
-  
+
   if (bird.checkCollision(groundY)) {
     endGame();
   }
 
   for (let i = wallsArr.length - 1; i >= 0; i--) {
     let walls = wallsArr[i];
-    if (walls.x + walls.width < 0) {
+    if ((walls.x + walls.w) < 0) {
       wallsArr.splice(i, 1);
       score++
     }
@@ -100,16 +102,16 @@ function draw() {
     }
     if (
       walls.x - bird.r <= bird.x &&  // Check if the Bird is between
-      walls.x + walls.w + bird.r  >= bird.x  // the walls horizontally
+      walls.x + walls.w + bird.r >= bird.x  // the walls horizontally
     ) {
       if (
         walls.h1 + bird.r >= bird.y || // Check if the bird is not 
         walls.y2 - bird.r <= bird.y // in the walls
       )
         endGame(); // Stop the game
-      }
+    }
     walls.update();
   }
-  
+
   bird.update();
 }

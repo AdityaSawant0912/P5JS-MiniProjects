@@ -15,7 +15,9 @@ let pa
 let pb
 
 function setup() {
-  createCanvas(900, 600);
+  let canvas = createCanvas(900, 600);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   frameRate(60);
   tower = new Tower(N);
   slider = createSlider(1, 7, 3);
@@ -25,6 +27,15 @@ function setup() {
   solveB.mousePressed(solveInit)
   maxMoves = createP(`Change N using Slider <br>Minimum No. Moves Required: 2<sup>n</sup> - 1 ie.: ${Math.pow(2, N) - 1}`)
   maxMoves.style('font-size', '30px')
+  slider.style('display', 'block');
+  slider.style('margin', 'auto');
+  resetB.style('margin', 'auto');
+  resetB.style('display', 'block');
+  solveB.style('margin', 'auto');
+  solveB.style('display', 'block');
+  maxMoves.style('margin', 'auto');
+  maxMoves.style('display', 'block');
+  maxMoves.style('text-align', 'center');
 }
 
 
@@ -135,7 +146,7 @@ function makeMove() {
         pb = tower.pegs[b].pop()
         tower.pegs[b].push(pb)
       } else pb = 0;
-    
+
       if (pa == 0) {
         tower.hold(getMX(b))
         tower.place(getMX(a))

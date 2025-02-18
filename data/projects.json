@@ -1,5 +1,5 @@
 {
-  "featured": "TowerOfHanoi",
+  "featured": "KMeans",
   "sequence" : [
     "TowerOfHanoi",
     "TowerOfHanoi",
@@ -8,9 +8,18 @@
     "TowerOfHanoi"
   ],
   "TowerOfHanoi" : {
-    "name" : "Tower of Hanoi",
-    "description" : "A simple game of Tower of Hanoi",
-    "image" : "hanoi.jpg",
-    "link" : "TowerOfHanoi"
+    "name": "Tower of Hanoi",
+    "description": "A simple game of Tower of Hanoi",
+    "image": "TowerOfHanoi.jpg",
+    "link": "TowerOfHanoi",
+    "scripts": ["index.js", "tower.js"],
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae ali"
+  },
+  "KMeans" : {
+    "name" : "K Means",
+    "description" : "K Means Algorithm for Clustering, Visualized",
+    "image" : "KMeans.jpg",
+    "link" : "KMeans",
+    "content": "<span className='text-red-300'> Hello </span>"
   }
 }

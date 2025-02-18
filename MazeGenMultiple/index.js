@@ -34,7 +34,10 @@ function removeWalls(a, b) {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
+
   // frameRate(5);
   cols = floor(width / w);
   rows = floor(height / w);
@@ -54,11 +57,11 @@ function doframe() {
 }
 
 function draw() {
-  
-    background(51);
-    for (let cell of grid) {
-      cell.show();
-    }
+
+  background(51);
+  for (let cell of grid) {
+    cell.show();
+  }
   while (!isCompleted) {
     if (!isCompleted) {
       current.visited = true;

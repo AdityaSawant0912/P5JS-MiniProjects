@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-      html {
-        color: white;
-        background-color: rgb(15, 15, 15);
-      }
-    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,5 +9,19 @@
     <script src="index.js"></script>
     <script src="level.js"></script>
   </head>
-  <body></body>
+  <body>
+    <script type="text/javascript">
+      try {
+        parent.check();
+      } catch (error) {
+        if (error instanceof DOMException) {
+          console.log("parent");
+          document.body.style.color = "white";
+          document.body.style.backgroundColor = "rgb(15, 15, 15)";
+          // document.body.style.zoom = "50%";
+        }
+        console.log("no parent");
+      }
+    </script>
+  </body>
 </html>

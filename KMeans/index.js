@@ -15,9 +15,9 @@ function restart() {
   // graph.addPoint(2, 10)
 }
 
-function itr () {
-  if(graph.points.length > 0 && graph.noOfClusters > 0)
-  graph.iterate()
+function itr() {
+  if (graph.points.length > 0 && graph.noOfClusters > 0)
+    graph.iterate()
 }
 
 document.getElementById("noOfClusters").onchange = () => {
@@ -57,7 +57,9 @@ function inp() {
 
 
 function setup() {
-  createCanvas(GRAPH_SIZE * 2, GRAPH_SIZE);
+  let canvas = createCanvas(GRAPH_SIZE * 2, GRAPH_SIZE);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   restart()
 
 }

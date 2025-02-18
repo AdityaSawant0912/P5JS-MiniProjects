@@ -29,12 +29,12 @@ function endGame() {
 }
 
 function setup() {
-  createCanvas(500, 700);
+  let canvas = createCanvas(500, 700);
   bird = new Bird();
   groundY = height;
   wallsArr = [new Walls()];
   score = 0;
-  
+
   restarBtn = createButton('Restart')
   restarBtn.mousePressed(() => {
     bird = new Bird()
@@ -47,24 +47,24 @@ function setup() {
 function draw() {
   // Draw stuff
   background(200);
-  showScore() 
+  showScore()
   wallsArr.forEach(walls => {
     walls.show();
   });
   bird.show()
-  
-  
+
+
   // Check stuff
-  if(bird.checkCollision(groundY))
+  if (bird.checkCollision(groundY))
     endGame()
-  
+
   wallsArr.forEach(walls => {
-    if(walls.x == width/2)
+    if (walls.x == width / 2)
       wallsArr.push(new Walls) // add new wall
-  
-    if(walls.x < -walls.w)
+
+    if (walls.x < -walls.w)
       wallsArr.splice(wallsArr.indexOf(walls), 1) // remove wall
-    
+
     if (walls.x + walls.w == floor(width / 4) || walls.x + walls.w == floor(width / 4) + 1)
       score++;
   });
@@ -80,7 +80,7 @@ function draw() {
         walls.y2 - bird.r <= bird.y // in the walls
       )
         endGame(); // Stop the game
-      }
+    }
     walls.update();
   });
   bird.update();

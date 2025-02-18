@@ -5,7 +5,7 @@ let board;
 
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
   // frameRate(5);a
   w = width / cols;
   h = height / rows;
@@ -15,24 +15,24 @@ function setup() {
 
 }
 
-function keyPressed(){
+function keyPressed() {
   //up
-  if(keyIsDown(87)){
+  if (keyIsDown(87)) {
     board.moveUp();
     board.addTile();
   }
   //right
-  if(keyIsDown(68)){
+  if (keyIsDown(68)) {
     board.moveRight();
     board.addTile();
   }
   //down
-  if(keyIsDown(83)){
+  if (keyIsDown(83)) {
     board.moveDown();
     board.addTile();
   }
   //left
-  if(keyIsDown(65)){
+  if (keyIsDown(65)) {
     board.moveLeft();
     board.addTile();
   }

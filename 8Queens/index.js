@@ -39,7 +39,9 @@ function setup() {
   input = createInput(`${N}`);
   solP = createP("");
   frameRate(5)
-  createCanvas(800, 800);
+  let canvas = createCanvas(800, 800);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   input.input(changeN)
   start()
 }
@@ -61,9 +63,9 @@ function draw() {
     }
     row--;
     let rm = sol.pop();
-    if(rm)
+    if (rm)
       rm.isQueen = false;
-    else{
+    else {
       solP.html("No Solution");
       noLoop();
     }

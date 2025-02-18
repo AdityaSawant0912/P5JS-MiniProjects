@@ -10,8 +10,8 @@ let row;
 let X;
 let Y;
 let p, x, y;
-let x1 
-let x2 
+let x1
+let x2
 let fx1
 let fx2
 
@@ -19,7 +19,7 @@ let a = 0;
 let b = 4;
 
 function func(x) {
-  return (Math.pow(x, 2) - 6 * x + 15);
+  return (Math.pow(x, 2) - 6 * x + 9 );
 }
 
 function drawGrid() {
@@ -45,24 +45,24 @@ function drawGrid() {
   Y = height - yPos * row;
   line(0, Y, width, Y);
   line(X, 0, X, height);
-  
+
   noStroke();
   fill(255);
   textSize(18)
   let t1 = []
   for (let i = -5; i < 11; i++) {
-    if(i < 0)
-    t1[i] = text(`${i}`, X + i * col, Y + 20)
+    if (i < 0)
+      t1[i] = text(`${i}`, X + i * col, Y + 20)
     else
-    t1[i] = text(` ${i}`, X + i * col, Y + 20)
+      t1[i] = text(` ${i}`, X + i * col, Y + 20)
   }
   textSize(18)
   let t = [];
   for (let i = -2; i < 11; i++) {
-    if(i == 10)
-    t[i] = text(` ${i}`, X - 35, Y - i * row - 3)
+    if (i == 10)
+      t[i] = text(` ${i}`, X - 35, Y - i * row - 3)
     else
-    t[i] = text(`   ${i}`, X - 35, Y - i * row - 3)
+      t[i] = text(`   ${i}`, X - 35, Y - i * row - 3)
   }
   ;
 }
@@ -79,7 +79,7 @@ function drawFunc() {
   }
 }
 
-function drawLines(){
+function drawLines() {
   let fx, fy
   // A
   stroke(255, 0, 0)
@@ -102,18 +102,21 @@ function itrate() {
   x2 = b - d;
   fx1 = func(x1);
   fx2 = func(x2);
-  x.elt.innerHTML = (x1 +x2) / 2;
+  x.elt.innerHTML = (x1 + x2) / 2;
   y.elt.innerHTML = (fx1 + fx2) / 2;
   if (fx1 < fx2) {
     a = x2;
   } else if (fx1 > fx2) {
     b = x1;
   }
-  
+
 }
 
 function setup() {
-  createCanvas(800, 800);
+  let canvas = createCanvas(800, 800);
+  
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   // console.log(GR);
   // console.log(func(5));
   let itra = createP('Iterations: ');

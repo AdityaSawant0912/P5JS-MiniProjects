@@ -1,11 +1,13 @@
 let a, b, d, dx, dy, H;
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   background(0);
 }
 
-atom = function(x, y, c){
+atom = function (x, y, c) {
   fill(c);
   rect(x, y, 3, 3)
 }
@@ -18,20 +20,20 @@ function draw() {
       dy = (y - height / 2) / (height * 100) - 0.655;
       a = dx;
       b = dy;
-      
+
       for (let t = 1; t < 200; t++) {
         d = (a * a) - (b * b) + dx;
         b = 2 * (a * b) + dy;
         a = d;
         H = d > 200;
-        if(H){
-          fill(t*3, t, t*0.5);
+        if (H) {
+          fill(t * 3, t, t * 0.5);
           rect(x, y, 3, 3)
           break;
         }
       }
     }
   }
-  
+
   noLoop()
 }

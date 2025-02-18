@@ -10,8 +10,9 @@ const sceneH = 400
 
 
 function setup() {
-  createCanvas(800, 400);
-  
+  let canvas = createCanvas(800, 400);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   for (let i = 0; i < 5; i++) {
     let x1 = random(sceneW);
     let x2 = random(sceneW);
@@ -23,13 +24,13 @@ function setup() {
   walls.push(new Boundary(sceneW, 0, sceneW, sceneH));
   walls.push(new Boundary(sceneW, sceneH, 0, sceneH));
   walls.push(new Boundary(0, sceneH, 0, 0));
-  
+
   particle = new Particle();
   sliderFOV = createSlider(0, 360, 45);
   sliderFOV.input(changeFOV)
 }
 
-function changeFOV(){
+function changeFOV() {
   const fov = sliderFOV.value();
   particle.updateFOV(fov)
 }
@@ -39,28 +40,28 @@ function draw() {
   for (let wall of walls) {
     wall.show();
   }
-  
-  
-  if(keyIsDown(65)){
+
+
+  if (keyIsDown(65)) {
     particle.rotate(-0.1);
   }
-  else if(keyIsDown(68)){
+  else if (keyIsDown(68)) {
     particle.rotate(0.1);
   }
-  else if(keyIsDown(87)){
+  else if (keyIsDown(87)) {
     particle.move(1);
   }
-  else if(keyIsDown(83)){
+  else if (keyIsDown(83)) {
     particle.move(-1);
   }
 
-  
+
   // particle.update(noise(xoff)*sceneW, noise(yoff)*sceneH);
   // xoff += 0.01;
   // xoff += 0.01;
   // particle.update(mouseX, mouseY)
   particle.show();
-  
+
   const scene = particle.look(walls);
   const w = sceneW / scene.length;
   push();
@@ -73,10 +74,10 @@ function draw() {
     const h = map(sq, 0, wSq, sceneH, 0);
     fill(b);
     rectMode(CENTER);
-    rect(i * w +w/2, sceneH/2, w + 1, h);
+    rect(i * w + w / 2, sceneH / 2, w + 1, h);
   }
   pop();
-  
+
   // ray.show();
   // ray.lookAt(mouseX, mouseY);
   // let pt = ray.cast(wall);

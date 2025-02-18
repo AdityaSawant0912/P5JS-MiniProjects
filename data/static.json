@@ -2,7 +2,7 @@
   "navItems":[
     {
       "name":"Home",
-      "link":"index.html"
+      "link":"/"
     },
     {
       "name":"About",

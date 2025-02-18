@@ -78,7 +78,9 @@ function rule(group1, group2, G) {
 }
 
 function setup() {
-  createCanvas(800, 800);
+  let canvas = createCanvas(800, 800);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
 
   yellow = createGroup(color(255, 255, 0), 500)
   red = createGroup(color(255, 0, 0), 500)
@@ -109,6 +111,6 @@ function draw() {
   rule(red, red, -1)
   rule(yellow, red, -0.001)
   gap()
-  
+
 
 }

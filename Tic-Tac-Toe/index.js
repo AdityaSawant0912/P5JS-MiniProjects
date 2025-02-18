@@ -2,7 +2,7 @@ let boundary
 let third, x, y, radius;
 let b, err, x1, y1;
 let board, player;
-let xWins = 0, oWins = 0, draws = 0; 
+let xWins = 0, oWins = 0, draws = 0;
 let lastWin = []
 newRound = true
 function win(n, type) {
@@ -10,19 +10,19 @@ function win(n, type) {
   push()
   stroke(255, 200);
   strokeWeight(5);
-  if(type == -1) return
+  if (type == -1) return
   if (type == 1) {
-    x = third / 4 + n * third/2
+    x = third / 4 + n * third / 2
     line(x, boundary, x, height - boundary)
 
   } else if (type == 2) {
-    y = third / 4 + n * third/2
-    line(boundary, y, (width/2) - boundary, y)
+    y = third / 4 + n * third / 2
+    line(boundary, y, (width / 2) - boundary, y)
 
   } else if (type == 3) {
-    line(boundary, boundary, (width/2) - boundary, height - boundary)
+    line(boundary, boundary, (width / 2) - boundary, height - boundary)
   } else if (type == 4) {
-    line((width/2) - boundary, boundary, boundary, height - boundary)
+    line((width / 2) - boundary, boundary, boundary, height - boundary)
   }
   pop()
   newRound = false
@@ -33,7 +33,7 @@ function check() {
   let b = board;
   for (let i = 0; i < b.length; i++) {
     if (b[i][0] == b[i][1] && b[i][1] == b[i][2] && b[i][2] != 0) {
-      if(b[i][0] == 1)
+      if (b[i][0] == 1)
         xWins += 1
       else
         oWins += 1
@@ -44,7 +44,7 @@ function check() {
   }
   for (let j = 0; j < b.length; j++) {
     if (b[0][j] == b[1][j] && b[1][j] == b[2][j] && b[2][j] != 0) {
-      if(b[0][j] == 1)
+      if (b[0][j] == 1)
         xWins += 1
       else
         oWins += 1
@@ -54,22 +54,23 @@ function check() {
     }
   }
   if (b[0][0] == b[1][1] && b[1][1] == b[2][2] && b[2][2] != 0) {
-    if(b[0][0] == 1)
-        xWins += 1
-      else
-        oWins += 1
+    if (b[0][0] == 1)
+      xWins += 1
+    else
+      oWins += 1
     win(-1, 3)
     lastWin = [-1, 3]
-    return} else
-   if (b[0][2] == b[1][1] && b[1][1] == b[2][0] && b[0][2] != 0) {
-    if(b[0][2] == 1)
+    return
+  } else
+    if (b[0][2] == b[1][1] && b[1][1] == b[2][0] && b[0][2] != 0) {
+      if (b[0][2] == 1)
         xWins += 1
       else
         oWins += 1
-    win(-1, 4)
-    lastWin = [-1, 4]
-    return
-  }
+      win(-1, 4)
+      lastWin = [-1, 4]
+      return
+    }
   let draw = true;
   for (let i = 0; i < b.length; i++) {
     for (let j = 0; j < b.length; j++) {
@@ -78,12 +79,12 @@ function check() {
       }
     }
   }
-  if(draw){
+  if (draw) {
     draws += 1
     newRound = false
     lastWin = [-1, -1]
   }
-  
+
 }
 
 function drawX(i, j, alpha) {
@@ -106,7 +107,7 @@ function drawDash(i, j, alpha) {
   stroke(255, alpha);
   strokeWeight(20);
   translate(x + j * third, y + i * third)
-  line(third / 3, 0, - third / 3, 0 )
+  line(third / 3, 0, - third / 3, 0)
   pop();
 }
 function drawScore(i, j, score) {
@@ -118,7 +119,7 @@ function drawScore(i, j, score) {
   translate(x + j * third, y + i * third)
   textAlign(CENTER)
   textSize(250)
-  text(`${score}`,0,0)
+  text(`${score}`, 0, 0)
   pop();
 }
 
@@ -135,8 +136,8 @@ function drawO(i, j, alpha) {
 
 function getIJ(mX, mY) {
   // console.log(mX)
-  if (0 < mX && mX < width/2 && 0 < mY && mY < height) {
-    x = floor(map(mX, 0, width/2, 0, 3))
+  if (0 < mX && mX < width / 2 && 0 < mY && mY < height) {
+    x = floor(map(mX, 0, width / 2, 0, 3))
     y = floor(map(mY, 0, height, 0, 3))
     return [x, y, false]
   } else {
@@ -144,11 +145,11 @@ function getIJ(mX, mY) {
   }
 }
 
-function restart(){
+function restart() {
   board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
   player = 1;
   xWins = 0
-  draws= 0
+  draws = 0
   oWins = 0
 }
 
@@ -162,7 +163,9 @@ function keyPressed() {
 
 
 function setup() {
-  createCanvas(800, 400);
+  let canvas = createCanvas(800, 400);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
   player = 1;
   third = width / 3;
@@ -183,37 +186,37 @@ function draw() {
   line(0 + boundary, height / 3, width - boundary, height / 3);
   line(0 + boundary, 2 * height / 3, width - boundary, 2 * height / 3);
   pop();
-  
+
   // Divider
   stroke(255, 200);
   strokeWeight(5);
   line(width / 2 + boundary, 0 + boundary, width / 2 + boundary, height - boundary);
-  
+
   // Scoring
   line(width / 2 + 2 * boundary, height / 3, width - boundary, height / 3);
   line(width / 2 + 2 * boundary, 2 * height / 3, width - boundary, 2 * height / 3);
-  
+
   // Draw X and O
   push()
   scale(0.5)
-  translate(100,0)
-  drawX(0,3)
-  drawDash(1,3)
-  drawO(2,3)
+  translate(100, 0)
+  drawX(0, 3)
+  drawDash(1, 3)
+  drawO(2, 3)
   pop()
-  if(!newRound )
+  if (!newRound)
     win(lastWin[0], lastWin[1])
-  
+
   // Draw Score
-  
+
   push()
   scale(0.5)
-  translate(150,100)
-  drawScore(0,4, xWins)
-  drawScore(1,4, draws)
-  drawScore(2,4, oWins)
+  translate(150, 100)
+  drawScore(0, 4, xWins)
+  drawScore(1, 4, draws)
+  drawScore(2, 4, oWins)
   pop()
-  
+
   // Symbols
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board.length; j++) {

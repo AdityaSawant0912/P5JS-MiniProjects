@@ -6,7 +6,9 @@ let flag = false;
 let first = true;
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   w = width / N;
   for (let row = 0; row < N; row++) {
     grid[row] = new Array(N);
@@ -17,12 +19,12 @@ function setup() {
   addBombs();
 }
 
-function refresh(){
+function refresh() {
   loop()
   setup();
-} 
+}
 
-function toggleFlag(){
+function toggleFlag() {
   flag = !flag;
 }
 
@@ -52,8 +54,8 @@ function showGrid() {
 }
 
 function showBombs() {
-  for(let col of grid){
-    for (let cell of col){
+  for (let col of grid) {
+    for (let cell of col) {
       if (cell.bomb) {
         fill(0);
         ellipse(cell.x * w + w / 2, cell.y * w + w / 2, w / 3);
@@ -62,14 +64,14 @@ function showBombs() {
   }
 }
 
-function checkIfDone(){
+function checkIfDone() {
   let c = 0
-  for(let col of grid){
-    for (let cell of col){
+  for (let col of grid) {
+    for (let cell of col) {
       if (cell.hidden) c++;
     }
   }
-  if(c == B) {
+  if (c == B) {
     push();
     textAlign(CENTER, CENTER);
     fill(0, 255, 0, 100);
@@ -95,10 +97,10 @@ function draw() {
   if (mouseIsPressed === true) {
     let x = floor(mouseX / w);
     let y = floor(mouseY / w);
-    
+
     if (mouseButton == LEFT && x < N && y < N && !flag) {
       if (grid[x][y].bomb) {
-        
+
         if (first) {
           grid[x][y].bomb = false;
           switchB(x, y)
@@ -115,13 +117,13 @@ function draw() {
           pop();
           noLoop();
         }
-      } else{
+      } else {
         grid[x][y].pop();
         first = false;
-      } 
+      }
     }
   }
-  if(flag){
+  if (flag) {
     let x = floor(mouseX / w);
     let y = floor(mouseY / w);
     push();

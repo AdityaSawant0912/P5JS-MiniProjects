@@ -6,7 +6,7 @@ let old = [-1, -1];
 let temp = [0, 0];
 let state1;
 let enfa;
-let cnv;
+let canvas;
 let wasPressed = false;
 let diff = [0, 0];
 let CanvasScale = [1, 1];
@@ -14,7 +14,7 @@ let CanvasScale = [1, 1];
 // expression = "(a + b) + ( c + d)";
 let p = null;
 let inp = null;
-expression = "(((0+1)*.1.0) +((0.0)*.(1.1)*))";
+expression = "(a)*.b";
 function drawArrow(base, vec) {
   push();
   stroke(255);
@@ -32,8 +32,8 @@ function drawArrow(base, vec) {
 function changeExp() {
   if (this.value()) {
     expression = this.value();
-    // noLoop()
-    // loop()
+    noLoop()
+    loop()
     setup()
   }
 }
@@ -49,8 +49,10 @@ function start() {
 }
 
 function setup() {
-  cnv = createCanvas(800, 800);
-  cnv.mousePressed(mousePressed1);
+  let canvas = createCanvas(800, 800);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
+  canvas.mousePressed(mousePressed1);
   // state1 = new State(0, false, false);
   // // state1.show = 8
   // state1.x = 200;
@@ -82,9 +84,9 @@ function mouseWheel(event) {
     CanvasScale[0] = 0.4;
     CanvasScale[1] = 0.4;
   }
-  if(CanvasScale[0] > 2){
-  CanvasScale[0] = 2;
-  CanvasScale[1] = 2;
+  if (CanvasScale[0] > 2) {
+    CanvasScale[0] = 2;
+    CanvasScale[1] = 2;
   }
   // console.log(CanvasScale[0]);
 }
@@ -98,10 +100,10 @@ function mousePressed1() {
 }
 
 function draw() {
-  translate(0 + SPACE + RAD/2, height / 2)
-  translate(width/2 -(SPACE + RAD/2), 0)
+  translate(0 + SPACE + RAD / 2, height / 2)
+  translate(width / 2 - (SPACE + RAD / 2), 0)
   scale(CanvasScale[0], CanvasScale[1])
-  translate(-width/2 - (SPACE + RAD/2), -0)
+  translate(-width / 2 - (SPACE + RAD / 2), -0)
   // translate(width/2 - enfa.tree[enfa.tree.length - 1].x/2, height/2)
 
 

@@ -6,9 +6,11 @@ let minX;
 let maxX;
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   minX = -width / 2;
-  maxX = width / 2;    
+  maxX = width / 2;
   picks = [];
   picks.push(new toothPick(0, 0, 1));
   // noLoop();
@@ -18,16 +20,16 @@ function setup() {
 
 function mousePressed() {
   // console.log("mousePressed");
-  redraw(); 
-  
-  
+  redraw();
+
+
 }
 
 
 function draw() {
   console.log(picks.length);
-  
-  if(picks.length > 18900)
+
+  if (picks.length > 18900)
     noLoop();
   let next = [];
   background(0);
@@ -39,18 +41,18 @@ function draw() {
     minX = min(minX, t.ax);
     maxX = max(minX, t.bx);
   }
-  for(let t of previous ){
+  for (let t of previous) {
     let nextA = t.createA(picks);
     let nextB = t.createB(picks);
-    if(nextA){
+    if (nextA) {
       next.push(nextA);
       nextA.show(255, 0, 0, 255, factor);
     }
-    if(nextB){
+    if (nextB) {
       next.push(nextB);
       nextB.show(255, 0, 0, 255, factor);
     }
-    
+
   };
   previous = next;
   picks.push(...next)

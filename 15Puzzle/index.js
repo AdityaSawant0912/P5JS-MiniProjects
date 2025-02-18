@@ -34,11 +34,11 @@ class tile {
       tiles[swapTile.i][swapTile.j].i,
       tiles[swapTile.i][swapTile.j].j,
     ] = [
-      tiles[swapTile.i][swapTile.j].i,
-      tiles[swapTile.i][swapTile.j].j,
-      tiles[this.i][this.j].i,
-      tiles[this.i][this.j].j,
-    ];
+        tiles[swapTile.i][swapTile.j].i,
+        tiles[swapTile.i][swapTile.j].j,
+        tiles[this.i][this.j].i,
+        tiles[this.i][this.j].j,
+      ];
     [tiles[this.i][this.j], tiles[swapTile.i][swapTile.j]] = [
       tiles[swapTile.i][swapTile.j],
       tiles[this.i][this.j],
@@ -64,13 +64,15 @@ class tile {
 
 function setup() {
   frameRate(1);
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   w = width / cols;
   h = height / rows;
   let state = [
     [2, 1, 3, 4],
-    [5, 6,7,8],
-    [9, 10,11, 12],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
     [13, 14, 15, "X"],
   ];
   let solvedState = [
@@ -101,7 +103,7 @@ function setup() {
       }
     }
   }
-  
+
   drawBoard();
 }
 
@@ -166,7 +168,7 @@ function draw() {
   [lowestIndex, lowest] = getLowest(score);
   console.log(tiles);
   let temp = [neighbors[lowestIndex].i, neighbors[lowestIndex].j];
-  
+
   tiles[emptyTile[0]][emptyTile[1]].swap(
     tiles[neighbors[lowestIndex].i][neighbors[lowestIndex].j]
   );
@@ -174,7 +176,7 @@ function draw() {
   // console.log(neighbors[lowestIndex].i, neighbors[lowestIndex].j);
   // console.log(emptyTile[0],emptyTile[1],neighbors[lowestIndex].i,neighbors[lowestIndex].j);
   emptyTile = temp;
-  
+
   console.log(emptyTile);
   if (lowestIndex == 0) tiles[emptyTile[0]][emptyTile[1]].lastDirection = "down";
   if (lowestIndex == 1)

@@ -84,7 +84,9 @@ function check() {
 
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   player = 1;
   board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
   third = width / 3; // as width == height
@@ -100,7 +102,7 @@ function draw() {
   line(2 * third, 0 + boundary, 2 * third, height - boundary);
   line(0 + boundary, height / 3, width - boundary, height / 3);
   line(0 + boundary, 2 * height / 3, width - boundary, 2 * height / 3);
-  
+
   // Symbols
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board.length; j++) {
@@ -114,9 +116,9 @@ function draw() {
       }
     }
   }
-  
+
   check();
-  
+
   [y1, x1, err] = getIJ(mouseX, mouseY)
   if (!err) {
     if (player == 1 && board[x1][y1] == 0) {
@@ -131,7 +133,7 @@ function draw() {
     }
 
   }
-  
+
 }
   // push();
   // pop();

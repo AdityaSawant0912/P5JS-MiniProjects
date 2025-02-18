@@ -12,7 +12,7 @@ function setup() {
   num = -1;
   picked = null;
   droped = null;
-  createCanvas(800, 800);
+  let canvas = createCanvas(800, 800);
   board = []
   for (let i = 0; i < 7; i++) {
     board.push([])
@@ -95,8 +95,8 @@ function getCord(x, y) {
 
 function isLegal(px, py, dx, dy) {
 
-  if (((Math.abs(px - dx) == 2 && py == dy) || (Math.abs(py - dy) == 2 && px == dx)) && board[(px + dx)/2][(py + dy)/2] == 1) {
-    board[(px + dx)/2][(py + dy)/2] = 0
+  if (((Math.abs(px - dx) == 2 && py == dy) || (Math.abs(py - dy) == 2 && px == dx)) && board[(px + dx) / 2][(py + dy) / 2] == 1) {
+    board[(px + dx) / 2][(py + dy) / 2] = 0
     return true;
   }
 
@@ -159,7 +159,7 @@ function graph() {
   }
 }
 
-function count(){
+function count() {
   textAlign(CENTER)
   textSize(30)
   fill(255)
@@ -170,5 +170,5 @@ function draw() {
   background(51);
   drawSetup();
   count();
-  // graph()
+//   graph()
 } 

@@ -2,15 +2,16 @@ let walls = [];
 let particle;
 
 let xoff = 0;
-let yoff = 100000;
+let yoff = 10000;
 
 let complete = false;
 let x1, x2;
 let index;
 
 function setup() {
-  createCanvas(800, 800);
-
+  let canvas = createCanvas(800, 800);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   // for (let i = 0; i < 5; i++) {
   //   let x1 = random(width);
   //   let x2 = random(width);
@@ -41,9 +42,9 @@ function mousePressed() {
     complete = false;
   }
 }
-function removeLast(){
+function removeLast() {
   // if(walls.length > 4)
-    walls.pop();
+  walls.pop();
 }
 
 function draw() {
@@ -51,7 +52,7 @@ function draw() {
   for (let wall of walls) {
     wall.show();
   }
-  if(complete && mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+  if (complete && mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
     line(x1, y1, mouseX, mouseY);
   }
   if (keyIsDown(BACKSPACE)) {

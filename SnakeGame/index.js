@@ -7,17 +7,19 @@ let speed = 8;
 let bestScore = 0;
 let bestP;
 function setup() {
-  createCanvas(800, 800);
+  let canvas = createCanvas(800, 800);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   frameRate(speed);
   grid = new Grid(20, 20);
   grid.addFood();
   grid.createSnake();
-  
+
   bestScore = getItem("SnakeGame-best");
   p = createP("Score: 0");
-  if(bestScore == null) bestScore = 0;
+  if (bestScore == null) bestScore = 0;
   bestP = createP(`Best Score: ${bestScore}`);
-  
+
 }
 
 
@@ -51,14 +53,14 @@ function draw() {
     bestP.html(`Best Score: ${grid.score}`);
     storeItem("SnakeGame-best", grid.score);
   }
-  else  
+  else
     bestP.html(`Best Score: ${bestScore}`);
-  if(grid.score > 0 && grid.score % 15 == 0) 
+  if (grid.score > 0 && grid.score % 15 == 0)
     speed++;
-  if(cooldown>0)cooldown = 0;
+  if (cooldown > 0) cooldown = 0;
 }
   // noLoop()
-  
-  
-  
-  
+
+
+
+

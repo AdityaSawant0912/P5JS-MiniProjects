@@ -24,7 +24,7 @@ function countNeighbors(grid, x, y) {
 }
 
 function setup() {
-  createCanvas(800, 800);
+  let canvas = createCanvas(800, 800);
   cols = width / resolution;
   rows = height / resolution;
   grid = make2DArray(cols, rows);

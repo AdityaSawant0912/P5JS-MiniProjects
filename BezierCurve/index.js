@@ -3,7 +3,9 @@ let connections = [];
 let wireInProgress = false;
 
 function setup() {
-  createCanvas(600, 600);
+  let canvas = createCanvas(600, 600);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   connections.push(new Connection(100, 100, "1"))
   connections.push(new Connection(400, 400, "2"))
 }

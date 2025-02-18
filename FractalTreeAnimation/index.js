@@ -8,7 +8,9 @@ let p;
 let len = 100;
 let y = 20, mul = 2;
 function setup() {
-  createCanvas(1024, 995);
+  let canvas = createCanvas(1024, 995);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   p = createP("Left Angle")
   leftAngle = createSlider(0, PI, 0.26, 0.01)
   p = createP("Right Angle")
@@ -22,27 +24,27 @@ function setup() {
   createTree();
 }
 
-function createTree(){
+function createTree() {
   leftAngleVal = leftAngle.value()
   rightAngleVal = rightAngle.value()
   leftLenMulVal = leftLenMul.value()
   rightLenMulVal = rightLenMul.value()
   depthVal = depth.value()
-  
+
   tree = new Tree(leftAngleVal, rightAngleVal, leftLenMulVal, rightLenMulVal, depthVal, len)
 }
 
 
 
 function draw() {
-  if(leftAngleVal != leftAngle.value() || rightAngleVal != rightAngle.value() || leftLenMulVal != leftLenMul.value() || rightLenMulVal != rightLenMul.value() || depthVal != depth.value() ){
+  if (leftAngleVal != leftAngle.value() || rightAngleVal != rightAngle.value() || leftLenMulVal != leftLenMul.value() || rightLenMulVal != rightLenMul.value() || depthVal != depth.value()) {
     createTree();
   }
 
   background(0);
   noStroke();
   fill(255);
-  
+
   text("Left Angle: " + leftAngleVal, width - 150, y);
   text("Right Left Angle: " + rightAngleVal, width - 150, y * mul);
   text("Left Length Multiplier: " + leftLenMulVal, width - 150, y * mul * 1.5);

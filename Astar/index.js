@@ -30,21 +30,21 @@ function Spot(i, j) {
   this.neighbors = [];
   this.previous = undefined;
   this.wall = false;
-  
-  if(random(1) < 0.4){
+
+  if (random(1) < 0.4) {
     this.wall = true;
   }
 
   this.show = function (col) {
     fill(col);
-    if(this.wall){
+    if (this.wall) {
       fill(0);
     }
-    
+
     noStroke();
     // rect(this.i * w, this.j * h, w , h );
-    ellipse(this.i * w + w/2, this.j * h + h/2,w/2,h/2)
-    
+    ellipse(this.i * w + w / 2, this.j * h + h / 2, w / 2, h / 2)
+
   };
 
   this.addNeighbors = function (grid) {
@@ -54,23 +54,25 @@ function Spot(i, j) {
     if (i > 0) this.neighbors.push(grid[i - 1][j]);
     if (j < rows - 1) this.neighbors.push(grid[i][j + 1]);
     if (j > 0) this.neighbors.push(grid[i][j - 1]);
-    if(i > 0 && j > 0){
+    if (i > 0 && j > 0) {
       this.neighbors.push(grid[i - 1][j - 1]);
     }
-    if(i < cols-1 && j > 0){
+    if (i < cols - 1 && j > 0) {
       this.neighbors.push(grid[i + 1][j - 1]);
     }
-    if(i > 0 && j < rows-1){
+    if (i > 0 && j < rows - 1) {
       this.neighbors.push(grid[i - 1][j + 1]);
     }
-    if(i < cols - 1 && j < rows - 1){
+    if (i < cols - 1 && j < rows - 1) {
       this.neighbors.push(grid[i + 1][j + 1]);
     }
   };
 }
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   console.log("A*");
 
   w = width / cols;
@@ -125,7 +127,7 @@ function draw() {
       let neighbor = neighbors[i];
       if (!closeSet.includes(neighbor) && !neighbor.wall) {
         let tempG = current.g + heuristic(neighbor, current);
-        
+
         let newPath = false;
         if (openSet.includes(neighbor)) {
           if (tempG < neighbor.g) {
@@ -134,7 +136,7 @@ function draw() {
           }
         } else {
           neighbor.g = tempG;
-          newPath  = true;
+          newPath = true;
           openSet.push(neighbor);
         }
         if (newPath) {
@@ -144,14 +146,14 @@ function draw() {
         }
       }
     }
-    
-    
+
+
   } else {
     // no Solution
     console.log("No Solution");
     noLoop();
     return;
-    
+
   }
 
   background(255);
@@ -168,7 +170,7 @@ function draw() {
   // for (let i = 0; i < openSet.length; i++) {
   //   openSet[i].show(color(0, 255, 0));
   // }
-  
+
   path = []
   let temp = current;
   path.push(temp);
@@ -176,18 +178,18 @@ function draw() {
     path.push(temp.previous);
     temp = temp.previous;
   }
-  
+
   // for (let i = 0; i < path.length; i++) {
   //   path[i].show(color(0, 0, 255));
   // }
-  
-  end.show(color(0,255,0))
-  stroke(200,0,255);
-  strokeWeight(w/2);
+
+  end.show(color(0, 255, 0))
+  stroke(200, 0, 255);
+  strokeWeight(w / 2);
   noFill()
   beginShape();
   for (let i = 0; i < path.length; i++) {
-    vertex(path[i].i * w + w/2, path[i].j * h + h/2);
+    vertex(path[i].i * w + w / 2, path[i].j * h + h / 2);
   }
   endShape();
 }

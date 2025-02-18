@@ -6,7 +6,9 @@ let lenMulSlider;
 let depth;
 let lenMul;
 function setup() {
-  createCanvas(800, 800);
+  let canvas = createCanvas(800, 800);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   frameRate(5)
   slider = createSlider(0, PI, 0.26, 0.01);
   depthSlider = createSlider(1, 13, 10, 1);
@@ -31,16 +33,16 @@ function draw() {
   stroke(255, 100);
   strokeWeight(2);
   // line(width / 2, height, width / 2, height - len);
-  translate(400, height-0.5*len);
+  translate(400, height - 0.5 * len);
   branch(len, 0);
 }
 
 
-function branch(len, d){
+function branch(len, d) {
   line(0, 0, 0, -len)
   translate(0, -len)
-  len*= lenMul
-  if(d < depth){
+  len *= lenMul
+  if (d < depth) {
     d++;
     push()
     rotate(angle);

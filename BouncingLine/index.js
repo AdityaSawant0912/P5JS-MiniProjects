@@ -13,8 +13,9 @@ let g;
 let b;
 
 function setup() {
-  createCanvas(300, 300);
-
+  let canvas = createCanvas(300, 300);
+  canvas.style('display', 'block')
+  canvas.style('margin', 'auto');
   startX = random(width);
   startY = random(height);
   endX = random(width);
@@ -56,19 +57,19 @@ function draw() {
   endX += deltaEndX;
   endY += deltaEndY;
 
-  if(startX < 0 || startX > width){
+  if (startX < 0 || startX > width) {
     deltaStartX *= -1;
   }
 
-  if(startY < 0 || startY > height){
+  if (startY < 0 || startY > height) {
     deltaStartY *= -1;
   }
 
-  if(endX < 0 || endX > width){
+  if (endX < 0 || endX > width) {
     deltaEndX *= -1;
   }
 
-  if(endY < 0 || endY > height){
+  if (endY < 0 || endY > height) {
     deltaEndY *= -1;
   }
 }
